@@ -14,6 +14,11 @@
   var file = (location.pathname.split("/").pop() || "index.html").toLowerCase();
   var onAbout = file.indexOf("about") === 0;
 
+  // 사이트에서는 깔끔한 주소( / , /about )로, 내 컴퓨터에서 파일로 열 때는 파일 이름으로 이동합니다.
+  var local = location.protocol === "file:";
+  var homeHref = local ? "index.html" : "/";
+  var aboutHref = local ? "about.html" : "/about";
+
   function nav(href, label, current) {
     return (
       '<a href="' + href + '"' +
@@ -24,15 +29,15 @@
 
   var header =
     '<header class="site-header">' +
-      '<a class="logo" href="index.html" aria-label="Yejin Lee 홈">' +
+      '<a class="logo" href="' + homeHref + '" aria-label="Yejin Lee 홈">' +
         '<span class="logo__text">YEJIN<br>LEE</span>' +
         // 마우스를 올리면 나타나는 이미지 (images/logo-hover.png). 파일이 없으면 기존 로고가 그대로 보입니다.
         '<img class="logo__hover" src="images/logo-hover.png" alt="" aria-hidden="true" ' +
           'onload="this.parentNode.classList.add(\'has-hover\')">' +
       "</a>" +
       '<nav class="nav" aria-label="주 메뉴">' +
-        nav("index.html", "WORKS", !onAbout) +
-        nav("about.html", "ABOUT", onAbout) +
+        nav(homeHref, "WORKS", !onAbout) +
+        nav(aboutHref, "ABOUT", onAbout) +
       "</nav>" +
     "</header>";
 
