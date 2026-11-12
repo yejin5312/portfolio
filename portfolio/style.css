@@ -1,0 +1,146 @@
+/*
+  기존 Figma 디자인 비율(가로 약 1544px 기준)에 맞춰
+  화면 너비에 비례해 커지고 작아지도록 만든 스타일입니다.
+  --u 는 화면 너비 1%를 뜻하며, 1920px 이상에서는 더 커지지 않습니다.
+*/
+:root {
+  --u: min(1vw, 19.2px);
+
+  --black: #000;
+  --gray: #9a9a9a;
+  --placeholder: #e8e8e8;
+  --placeholder-mid: #8c8c8c;
+  --line: #dcdcdc;
+
+  /* 좌우 여백 8.2% (아주 넓은 화면에서는 가운데 정렬) */
+  --pad: max(calc(var(--u) * 8.2), calc((100vw - 1920px) / 2 + 157.44px));
+  --gap: calc(var(--u) * 1.36);
+
+  --fs-logo: calc(var(--u) * 1.25);
+  --fs-nav: calc(var(--u) * 1.25);
+  --fs-foot: max(10px, calc(var(--u) * 0.7));
+
+  --header-top: calc(var(--u) * 2.1);
+  --header-bottom: calc(var(--u) * 1.5);
+  --works-top: calc(var(--u) * 2.9);
+  --works-bottom: calc(var(--u) * 12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  color: var(--black);
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Header ---------- */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--header-top) var(--pad) var(--header-bottom);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+}
+
+.logo {
+  display: inline-block;
+  text-align: center;
+  font-size: var(--fs-logo);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0.06em;
+}
+
+.nav {
+  display: flex;
+  gap: calc(var(--u) * 12.5);
+  font-size: var(--fs-nav);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.nav a { transition: color 0.2s; }
+.nav a.is-current { color: var(--gray); }
+.nav a:not(.is-current):hover { color: var(--gray); }
+
+/* ---------- Works grid ---------- */
+.works {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap);
+  padding: var(--works-top) var(--pad) 0;
+  margin-bottom: var(--works-bottom);
+  align-content: start;
+}
+
+.work {
+  aspect-ratio: 414 / 268;
+  background: #1a1a1a;
+  overflow: hidden;
+}
+
+.work--light { background: var(--placeholder); }
+.work--mid { background: var(--placeholder-mid); }
+
+.work img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  display: grid;
+  grid-template-columns: 23.8% 26.3% auto 1fr;
+  padding: calc(var(--u) * 2.4) var(--pad) calc(var(--u) * 4.5);
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-foot);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.footer-col--right { text-align: right; }
+.site-footer a { text-decoration: underline; text-underline-offset: 2px; }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 700px) {
+  :root {
+    --pad: 20px;
+    --gap: 10px;
+    --fs-logo: 13px;
+    --fs-nav: 14px;
+    --fs-foot: 10px;
+    --header-top: 20px;
+    --header-bottom: 12px;
+    --works-top: 24px;
+    --works-bottom: 80px;
+  }
+
+  .works { grid-template-columns: 1fr; }
+
+  .nav { gap: 28px; }
+
+  .site-footer {
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 16px;
+    padding-top: 28px;
+    padding-bottom: 40px;
+  }
+
+  .footer-col--right { text-align: left; }
+}
