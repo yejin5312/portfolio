@@ -322,8 +322,8 @@ a { color: inherit; text-decoration: none; }
 .pj-ph { background: var(--placeholder); overflow: hidden; }
 .r34 { aspect-ratio: 3 / 4; }
 .r43 { aspect-ratio: 4 / 3; }
-.r34, .r43 { position: relative; }
-.r34 img, .r43 img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.r34, .r43, .pj-capbox, .pj-trio--tall figure, .pj-stair__b, .pj-zig__b { position: relative; }
+.r34 img, .r43 img, .pj-capbox img, .pj-trio--tall figure img, .pj-stair__b img, .pj-zig__b img { position: absolute; inset: 0; width: 100%; height: 100%; }
 
 /* 소개 글 + 대표 이미지 */
 .pj-hero {
@@ -458,6 +458,30 @@ a { color: inherit; text-decoration: none; }
 .pj-trio--tall figure { aspect-ratio: 388 / 491; }
 .pj-wide--pony { aspect-ratio: 1270 / 508; }
 
+/* ---------- O-NEST 페이지 전용 ---------- */
+.pj-sketch--onest { margin-top: calc(var(--u) * 6); }
+.pj--long { margin-bottom: calc(var(--u) * 26); }
+.pj-trio--cap { gap: calc(var(--u) * 3.4); margin-top: calc(var(--u) * 12); }
+.pj-capbox { aspect-ratio: 390 / 497; }
+.pj-figcap { margin-top: calc(var(--u) * 1.3); font-size: var(--pj-cap); font-weight: 400; line-height: 1.55; }
+.pj-trio--cap + .pj-pair { margin-top: calc(var(--u) * 16.7); }
+.pj-zig { display: grid; grid-template-columns: 1fr 1fr; margin-top: calc(var(--u) * 15.4); }
+.pj-zig__a { grid-column: 2; grid-row: 1; }
+.pj-zig__b { grid-column: 1; grid-row: 2; aspect-ratio: 636 / 413; }
+.pj-map { width: calc(var(--u) * 68); margin-left: auto; margin-right: auto; }
+.pj-map img { height: auto; }
+.pj-note {
+  margin-top: calc(var(--u) * 6);
+  font-size: var(--pj-cap);
+  font-weight: 300;
+  line-height: 1.65;
+  text-align: center;
+}
+.pj-wide--onest { margin-top: calc(var(--u) * 12.5); aspect-ratio: 1272 / 509; }
+
+/* 모바일 메뉴 부품은 PC에서 숨김 */
+.menu-dim, .menu-close { display: none; }
+
 /* ---------- Mobile ---------- */
 @media (max-width: 700px) {
   :root {
@@ -513,21 +537,70 @@ a { color: inherit; text-decoration: none; }
     background: #000;
   }
 
+  /* 메뉴를 열면: 왼쪽에서 노란 패널이 나오고 나머지는 어두워짐 */
   .nav {
-    display: none;
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 0;
     left: 0;
-    right: 0;
+    width: 78vw;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 3;
     flex-direction: column;
-    gap: 18px;
-    padding: 18px var(--pad) 24px;
-    background: #fff;
-    border-bottom: 1px solid var(--line);
-    font-size: 15px;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 46px 22px 0;
+    background: #FAE483;
+    font-size: 13px;
+    font-weight: 300;
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform 0.3s ease, visibility 0s linear 0.3s;
+  }
+  .nav a, .nav a.is-current { color: #000; text-decoration: underline; text-underline-offset: 3px; }
+
+  .menu-dim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
   }
 
-  .site-header.is-open .nav { display: flex; }
+  .menu-close {
+    display: block;
+    position: fixed;
+    top: 14px;
+    right: 20px;
+    z-index: 4;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .menu-close::before, .menu-close::after {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 12px;
+    width: 22px;
+    height: 1.5px;
+    background: #fff;
+    transform: rotate(45deg);
+  }
+  .menu-close::after { transform: rotate(-45deg); }
+
+  .site-header.is-open .nav { transform: none; visibility: visible; transition: transform 0.3s ease; }
+  .site-header.is-open .menu-dim { opacity: 1; pointer-events: auto; }
+  .site-header.is-open .menu-close { opacity: 1; pointer-events: auto; }
 
   /* 프로젝트 상세 페이지 */
   .pj { margin-bottom: 80px; }
@@ -553,6 +626,15 @@ a { color: inherit; text-decoration: none; }
   .pj-duo { grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
   .pj-duo figure { grid-column: auto; aspect-ratio: 4 / 3; }
   .pj-wide { margin-top: 48px; }
+  .pj--long { margin-bottom: 80px; }
+  .pj-trio--cap { grid-template-columns: 1fr; gap: 26px; margin-top: 40px; }
+  .pj-trio--cap figure { width: 68%; margin: 0 auto; }
+  .pj-figcap { margin-top: 8px; }
+  .pj-trio--cap + .pj-pair { margin-top: 40px; }
+  .pj-zig { margin-top: 14px; }
+  .pj-map { width: 100%; }
+  .pj-note { margin-top: 24px; font-size: 10px; }
+  .pj-wide--onest { margin-top: 48px; }
   .pj-stair { grid-template-columns: 1fr; gap: 26px; margin-top: 40px; }
   .pj-stair__a, .pj-stair__b { grid-column: 1; grid-row: auto; width: 68%; margin: 0 auto; }
   .pj-process--tight { margin-top: 28px; }

@@ -31,6 +31,8 @@
     '<header class="site-header">' +
       // 모바일에서만 보이는 햄버거 메뉴 버튼
       '<button class="menu-btn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>' +
+      '<div class="menu-dim"></div>' +
+      '<button class="menu-close" type="button" aria-label="메뉴 닫기"></button>' +
       '<a class="logo" href="' + homeHref + '" aria-label="Yejin Lee 홈">' +
         '<span class="logo__text">YEJIN<br>LEE</span>' +
         // 마우스를 올리면 나타나는 이미지 (images/logo-hover.png). 파일이 없으면 기존 로고가 그대로 보입니다.
@@ -80,15 +82,19 @@
     el.insertAdjacentHTML("beforebegin", header);
     initCursor();
 
-    // 모바일 햄버거 메뉴 열기/닫기
+    // 모바일 햄버거 메뉴 열기/닫기 (열면 노란 패널, 바깥/X/ESC로 닫기)
     var bar = el.previousElementSibling;
     var btn = bar && bar.querySelector(".menu-btn");
     if (btn) {
-      btn.addEventListener("click", function () {
-        var open = bar.classList.toggle("is-open");
+      var setOpen = function (open) {
+        bar.classList.toggle("is-open", open);
         btn.setAttribute("aria-expanded", open ? "true" : "false");
         btn.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
-      });
+      };
+      btn.addEventListener("click", function () { setOpen(!bar.classList.contains("is-open")); });
+      bar.querySelector(".menu-dim").addEventListener("click", function () { setOpen(false); });
+      bar.querySelector(".menu-close").addEventListener("click", function () { setOpen(false); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") setOpen(false); });
     }
   }
   if (slot === "footer") el.insertAdjacentHTML("beforebegin", footer);
