@@ -22,15 +22,40 @@
   <script src="site.js" data-slot="header"></script>
 
   <main class="works">
-    <!-- 이미지는 images 폴더에 work-01.png ~ work-08.png 로 넣어주세요 -->
-    <figure class="work work--light"><img src="images/work-01.png" alt="작품 01" loading="lazy" onerror="this.style.display='none'"></figure>
-    <figure class="work work--light"><img src="images/work-02.png" alt="작품 02" loading="lazy" onerror="this.style.display='none'"></figure>
-    <figure class="work"><img src="images/work-03.png" alt="작품 03" loading="lazy" onerror="this.style.display='none'"></figure>
-    <figure class="work"><img src="images/work-04.png" alt="작품 04" loading="lazy" onerror="this.style.display='none'"></figure>
-    <figure class="work"><img src="images/work-05.png" alt="작품 05" loading="lazy" onerror="this.style.display='none'"></figure>
-    <figure class="work work--mid"><img src="images/work-06.png" alt="작품 06" loading="lazy" onerror="this.style.display='none'"></figure>
-    <figure class="work"><img src="images/work-07.png" alt="작품 07" loading="lazy" onerror="this.style.display='none'"></figure>
-    <figure class="work"><img src="images/work-08.png" alt="작품 08" loading="lazy" onerror="this.style.display='none'"></figure>
+    <!--
+      이미지는 images 폴더에 work-01.png ~ work-08.png 로 넣어주세요.
+      <figcaption> 안의 글자가 마우스를 올렸을 때 나오는 프로젝트 이름이에요.
+    -->
+    <figure class="work work--light">
+      <a class="work__link" href="contain.html" aria-label="CONTAIN | VASE 프로젝트 보기">
+        <img src="images/work-01.png" alt="CONTAIN | VASE" loading="lazy" onerror="this.style.display='none'">
+      </a>
+      <figcaption class="work__title">CONTAIN | VASE</figcaption>
+    </figure>
+    <figure class="work work--light">
+      <img src="images/work-02.png" alt="PONY | STOOL" loading="lazy" onerror="this.style.display='none'">
+      <figcaption class="work__title">PONY | STOOL</figcaption>
+    </figure>
+    <figure class="work">
+      <img src="images/work-03.png" alt="O-NEST | LIGHTING" loading="lazy" onerror="this.style.display='none'">
+      <figcaption class="work__title">O-NEST | LIGHTING</figcaption>
+    </figure>
+    <figure class="work">
+      <img src="images/holiday2026.png" alt="HOLIDAY 2026 | Ornament" loading="lazy" onerror="this.style.display='none'">
+      <figcaption class="work__title">HOLIDAY 2026 | Ornament</figcaption>
+    </figure>
+    <figure class="work work--mid">
+      <img src="images/work-06.png" alt="PILE | Side Table" loading="lazy" onerror="this.style.display='none'">
+      <figcaption class="work__title">PILE | Side Table</figcaption>
+    </figure>
+    <figure class="work work--light">
+      <img src="images/gyeop.png" alt="GYEOP | Tableware" loading="lazy" onerror="this.style.display='none'">
+      <figcaption class="work__title">GYEOP | Tableware</figcaption>
+    </figure>
+    <figure class="work work--light">
+      <img src="images/rustle.png" alt="RUSTLE | Cleaning Tools" loading="lazy" onerror="this.style.display='none'">
+      <figcaption class="work__title">RUSTLE | Cleaning Tools</figcaption>
+    </figure>
   </main>
 
   <!-- 하단 정보 바: site.js 에서 모든 페이지 공통으로 불러옵니다 -->
