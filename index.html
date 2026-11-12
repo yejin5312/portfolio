@@ -18,13 +18,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <a class="logo" href="index.html" aria-label="Yejin Lee 홈">YEJIN<br>LEE</a>
-    <nav class="nav" aria-label="주 메뉴">
-      <a href="index.html" class="is-current" aria-current="page">WORKS</a>
-      <a href="about.html">ABOUT</a>
-    </nav>
-  </header>
+  <!-- 상단 바: site.js 에서 모든 페이지 공통으로 불러옵니다 -->
+  <script src="site.js" data-slot="header"></script>
 
   <main class="works">
     <!-- 이미지는 images 폴더에 work-01.png ~ work-08.png 로 넣어주세요 -->
@@ -38,23 +33,7 @@
     <figure class="work"><img src="images/work-08.png" alt="작품 08" loading="lazy" onerror="this.style.display='none'"></figure>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-col">
-      <p>YEJIN LEE</p>
-      <p>Based in Seoul</p>
-    </div>
-    <div class="footer-col">
-      <p>+82 10 6555 5312</p>
-      <p><a href="mailto:yejin5312@gmail.com">yejin5312@gmail.com</a></p>
-    </div>
-    <div class="footer-col">
-      <p>INSTAGRAM</p>
-      <p><a href="https://www.instagram.com/yejin5312" target="_blank" rel="noopener">@yejin5312</a></p>
-    </div>
-    <div class="footer-col footer-col--right">
-      <p>Copyright © 2026 Yejin Lee</p>
-      <p>All rights reserved</p>
-    </div>
-  </footer>
+  <!-- 하단 정보 바: site.js 에서 모든 페이지 공통으로 불러옵니다 -->
+  <script src="site.js" data-slot="footer"></script>
 </body>
 </html>

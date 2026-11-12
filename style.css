@@ -24,6 +24,18 @@
   --header-bottom: calc(var(--u) * 1.5);
   --works-top: calc(var(--u) * 2.9);
   --works-bottom: calc(var(--u) * 12);
+
+  --logo-hover-h: calc(var(--u) * 4.2);
+
+  /* ABOUT 페이지 */
+  --fs-about: calc(var(--u) * 0.85);
+  --about-indent: calc(var(--u) * 22.9);
+  --intro-pad: calc(var(--u) * 2.8);
+  --info-top: calc(var(--u) * 5.6);
+  --info-pad: calc(var(--u) * 2.35);
+  --block-gap: calc(var(--u) * 4);
+  --col-a: calc(var(--u) * 4.7);
+  --col-b: calc(var(--u) * 3.7);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -76,6 +88,29 @@ a { color: inherit; text-decoration: none; }
 .nav a.is-current { color: var(--gray); }
 .nav a:not(.is-current):hover { color: var(--gray); }
 
+/* 로고에 마우스를 올리면 같은 자리에서 PORTFOLIO 이미지로 바뀜 */
+.logo { position: relative; }
+
+.logo__text { display: inline-block; transition: opacity 0.15s; }
+
+.logo__hover {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: var(--logo-hover-h);
+  width: auto;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+
+.logo.has-hover:hover .logo__text,
+.logo.has-hover:focus-visible .logo__text { opacity: 0; }
+
+.logo.has-hover:hover .logo__hover,
+.logo.has-hover:focus-visible .logo__hover { opacity: 1; }
+
 /* ---------- Works grid ---------- */
 .works {
   flex: 1;
@@ -107,7 +142,7 @@ a { color: inherit; text-decoration: none; }
 .site-footer {
   display: grid;
   grid-template-columns: 23.8% 26.3% auto 1fr;
-  padding: calc(var(--u) * 2.4) var(--pad) calc(var(--u) * 4.5);
+  padding: calc(var(--u) * 3.7) var(--pad) calc(var(--u) * 5);
   border-top: 1px solid var(--line);
   font-size: var(--fs-foot);
   font-weight: 300;
@@ -116,6 +151,118 @@ a { color: inherit; text-decoration: none; }
 
 .footer-col--right { text-align: right; }
 .site-footer a { text-decoration: underline; text-underline-offset: 2px; }
+
+/* ---------- Custom cursor (노란 원형 커서) ---------- */
+:root {
+  --cursor-size: 32px;
+  --cursor-color: #FFD351;
+  --cursor-link-scale: 1.3; /* 링크 위에서 커지는 배율 (1이면 안 커짐) */
+}
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.cursor.is-visible { opacity: 1; }
+
+.cursor__dot {
+  width: var(--cursor-size);
+  height: var(--cursor-size);
+  margin: calc(var(--cursor-size) / -2) 0 0 calc(var(--cursor-size) / -2);
+  border-radius: 50%;
+  background: var(--cursor-color);
+  transition: transform 0.2s ease;
+}
+
+/* 링크 위에서는 조금 커져서 눌러도 되는 곳임을 알려줍니다 */
+.cursor.is-link .cursor__dot { transform: scale(var(--cursor-link-scale)); }
+
+@media (hover: hover) and (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor * { cursor: none !important; }
+}
+
+/* ---------- About ---------- */
+.about {
+  flex: 1;
+  padding: var(--works-top) var(--pad) 0;
+  margin-bottom: var(--works-bottom);
+  font-size: var(--fs-about);
+}
+
+.about-inner { margin-left: var(--about-indent); }
+
+.about-visual {
+  aspect-ratio: 1007 / 391;
+  background: #efefef;
+  overflow: hidden;
+}
+
+.about-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-intro { padding: calc(var(--u) * 2) 0 0 var(--intro-pad); }
+
+.about-headline {
+  position: relative;
+  display: inline-block;
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* 크레용으로 그은 듯한 노란 밑줄 (질감은 stroke.svg 에 들어 있어요) */
+.about-headline::after {
+  content: "";
+  position: absolute;
+  left: -0.5em;
+  right: -0.7em;
+  bottom: -0.8em;
+  height: 0.75em;
+  background: url("stroke.svg") center / 100% 100% no-repeat;
+  transform: rotate(-0.3deg);
+}
+
+.about-intro p {
+  max-width: calc(var(--u) * 46);
+  margin-top: calc(var(--u) * 2.4);
+  font-weight: 300;
+  line-height: 1.55;
+  color: #444;
+}
+
+.about-info {
+  margin-top: var(--info-top);
+  padding-left: var(--info-pad);
+  border-left: 1px solid #b5b5b5;
+  line-height: 1.35;
+}
+
+.info-block + .info-block { margin-top: var(--block-gap); }
+
+.info-block h2 {
+  margin-bottom: 0.9em;
+  font-size: 0.95em;
+  font-weight: 600;
+}
+
+.info-gap { margin-top: 0.7em; }
+
+.kv { display: grid; row-gap: 0.1em; }
+.kv--a { grid-template-columns: var(--col-a) 1fr; }
+.kv--b { grid-template-columns: var(--col-b) 1fr; }
+.kv .v { font-weight: 300; color: #555; }
+.kv .sub { padding-left: 0.7em; }
 
 /* ---------- Mobile ---------- */
 @media (max-width: 700px) {
@@ -129,6 +276,16 @@ a { color: inherit; text-decoration: none; }
     --header-bottom: 12px;
     --works-top: 24px;
     --works-bottom: 80px;
+
+    --logo-hover-h: 34px;
+    --fs-about: 13px;
+    --about-indent: 0px;
+    --intro-pad: 0px;
+    --info-top: 40px;
+    --info-pad: 14px;
+    --block-gap: 32px;
+    --col-a: 84px;
+    --col-b: 64px;
   }
 
   .works { grid-template-columns: 1fr; }
