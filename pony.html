@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PONY | Stool — Yejin Lee</title>
+  <meta name="description" content="PONY is a stool inspired by the short, sturdy legs and balanced proportions of a pony. Personal project, 2026.">
+  <meta property="og:title" content="PONY | Stool — Yejin Lee">
+  <meta property="og:description" content="A stool inspired by the short, sturdy legs and balanced proportions of a pony.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yejin5312.com/pony">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 상단 바: site.js 에서 모든 페이지 공통으로 불러옵니다 -->
+  <script src="site.js" data-slot="header"></script>
+
+  <!--
+    이미지는 images/pony 폴더에 pony-01 ~ pony-12 로 넣어주세요. (위에서 아래, 왼쪽에서 오른쪽 순서)
+    02, 07 번만 .png, 나머지는 .jpg
+  -->
+  <main class="pj">
+
+    <!-- 1. 소개 + 대표 이미지 -->
+    <section class="pj-hero">
+      <div class="pj-info">
+        <h1>PONY | Stool</h1>
+        <p class="pj-meta">
+          <b>Year</b> 2026<br>
+          <b>Duration</b> 15 weeks<br>
+          <b>Personal Project</b><br>
+          Solid Ash / 330*422*450
+        </p>
+        <p class="pj-desc">Inspired by the short, sturdy legs and balanced proportions of a pony, <i>PONY</i> reinterprets its compact and stable form in a functional stool.<br>Its simple silhouette emphasizes a sense of solidity while maintaining a playful character.</p>
+        <p class="pj-tags"><span>#FormStudy</span><span>#FurnitureMaking</span></p>
+      </div>
+      <figure class="pj-ph pj-hero__img">
+        <img src="images/pony/pony-01.jpg" alt="PONY 스툴" onerror="this.style.display='none'">
+      </figure>
+    </section>
+
+    <!-- 2. 일러스트 -->
+    <figure class="pj-sketch pj-sketch--wide">
+      <img src="images/pony/pony-02.png" alt="수레와 장화를 신은 포니 일러스트" loading="lazy" onerror="this.style.display='none'">
+    </figure>
+
+    <!-- 3. 노란 설명 박스 -->
+    <section class="pj-band">
+      <p>Ponies are sturdy and dependable, yet full of playful energy. Their compact bodies and short legs give them a grounded stance, while their soft tails add a touch of character and charm. These contrasting qualities inspired a stool that balances solidity with a mischievous spirit.</p>
+      <p><i>PONY</i> brings the character of a pony into furniture through a sculptural form and tactile details.<br>A furry tail and playful, fur-covered stool socks add unexpected touches of humor, turning a functional seat into a little character that brings joy to everyday spaces.</p>
+    </section>
+
+    <!-- 4. 스툴 두 컷 -->
+    <section class="pj-pair">
+      <figure class="pj-ph r34"><img src="images/pony/pony-03.jpg" alt="PONY 정면" loading="lazy" onerror="this.style.display='none'"></figure>
+      <figure class="pj-ph r34"><img src="images/pony/pony-04.jpg" alt="PONY 측면" loading="lazy" onerror="this.style.display='none'"></figure>
+    </section>
+
+    <!-- 5. 계단식 배치 (왼쪽 위 + 오른쪽 아래) -->
+    <section class="pj-stair">
+      <figure class="pj-ph pj-stair__a r34"><img src="images/pony/pony-05.jpg" alt="꼬리 디테일" loading="lazy" onerror="this.style.display='none'"></figure>
+      <figure class="pj-ph pj-stair__b"><img src="images/pony/pony-06.jpg" alt="털 양말 디테일" loading="lazy" onerror="this.style.display='none'"></figure>
+    </section>
+
+    <!-- 6. 제작 과정 -->
+    <figure class="pj-process">
+      <img src="images/pony/pony-07.png" alt="스케치" loading="lazy" onerror="this.style.display='none'">
+    </figure>
+    <figure class="pj-process pj-process--tight">
+      <img src="images/pony/pony-08.jpg" alt="치수 도면" loading="lazy" onerror="this.style.display='none'">
+    </figure>
+
+    <section class="pj-trio pj-trio--tall">
+      <figure class="pj-ph"><img src="images/pony/pony-09.jpg" alt="목재 가공" loading="lazy" onerror="this.style.display='none'"></figure>
+      <figure class="pj-ph"><img src="images/pony/pony-10.jpg" alt="조립 작업" loading="lazy" onerror="this.style.display='none'"></figure>
+      <figure class="pj-ph"><img src="images/pony/pony-11.jpg" alt="샌딩 작업" loading="lazy" onerror="this.style.display='none'"></figure>
+    </section>
+
+    <figure class="pj-ph pj-wide pj-wide--pony">
+      <img src="images/pony/pony-12.jpg" alt="공방에 놓인 스툴들 사이의 PONY" loading="lazy" onerror="this.style.display='none'">
+    </figure>
+
+  </main>
+
+  <!-- 하단 정보 바: site.js 에서 모든 페이지 공통으로 불러옵니다 -->
+  <script src="site.js" data-slot="footer"></script>
+</body>
+</html>

@@ -443,6 +443,21 @@ a { color: inherit; text-decoration: none; }
 
 .pj-wide { margin-top: calc(var(--u) * 16); aspect-ratio: 975 / 391; }
 
+
+/* ---------- PONY 페이지 전용 ---------- */
+.pj-sketch--wide { width: calc(var(--u) * 50); }
+.pj-stair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: calc(var(--u) * 15.4);
+}
+.pj-stair__a { grid-column: 1; grid-row: 1; }
+.pj-stair__b { grid-column: 2; grid-row: 2; aspect-ratio: 635 / 620; }
+.pj-process--tight { margin-top: calc(var(--u) * 4); }
+.pj-trio--tall { gap: calc(var(--u) * 3.5); margin-top: calc(var(--u) * 11); }
+.pj-trio--tall figure { aspect-ratio: 388 / 491; }
+.pj-wide--pony { aspect-ratio: 1270 / 508; }
+
 /* ---------- Mobile ---------- */
 @media (max-width: 700px) {
   :root {
@@ -538,6 +553,10 @@ a { color: inherit; text-decoration: none; }
   .pj-duo { grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
   .pj-duo figure { grid-column: auto; aspect-ratio: 4 / 3; }
   .pj-wide { margin-top: 48px; }
+  .pj-stair { grid-template-columns: 1fr; gap: 26px; margin-top: 40px; }
+  .pj-stair__a, .pj-stair__b { grid-column: 1; grid-row: auto; width: 68%; margin: 0 auto; }
+  .pj-process--tight { margin-top: 28px; }
+  .pj-trio--tall { grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 28px; }
 
   .site-footer {
     grid-template-columns: 1fr 1fr;
