@@ -250,7 +250,9 @@ a { color: inherit; text-decoration: none; }
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
+  transform: scale(1.2); /* 숫자를 키우면 그림이 더 커져요 (1 = 박스에 딱 맞춤) */
 }
 
 .about-intro { padding: calc(var(--u) * 2) 0 0 var(--intro-pad); }
@@ -666,7 +668,7 @@ a { color: inherit; text-decoration: none; }
   .about-visual { aspect-ratio: 678 / 496; }
   /* 일러스트 가로 = 회색 박스 가로, 세로는 가운데 기준 */
   .about-visual { display: flex; align-items: center; justify-content: center; }
-  .about-visual img { width: 94%; height: auto; flex: none; }
+  .about-visual img { width: 94%; height: auto; flex: none; transform: none; }
   .about-intro { padding: 32px 22px 0; text-align: center; }
   .about-intro p { max-width: none; margin-top: 28px; }
   /* 아래 정보는 왼쪽 정렬: 세로선이 위 가운데 정렬 글의 왼쪽 시작선(22px)과 같은 위치 */
