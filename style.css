@@ -693,10 +693,11 @@ a { color: inherit; text-decoration: none; }
   .pj-split,
   .pj-pair + .pj-split { grid-template-columns: 1fr; margin-top: 40px; }
 
-  .pj-big { grid-column: 1; grid-row: auto; order: 1; width: 68%; margin: 0 auto; }
-  .pj-cap { grid-column: 1; grid-row: auto; order: 2; width: 68%; margin: 8px auto 0; padding: 0; text-align: left; }
+  /* 설명 글은 이미지 위, 이미지는 양쪽 여백에 맞게 크게 */
+  .pj-cap { grid-column: 1; grid-row: auto; order: 1; width: 100%; margin: 0 0 10px; padding: 0; text-align: left; }
+  .pj-big { grid-column: 1; grid-row: auto; order: 2; width: 100%; margin: 0; }
   .pj-smalls { order: 3; margin-top: 16px; }
-  .pj-split__wide { order: 4; width: 49%; margin-top: 20px; }
+  .pj-split__wide { order: 4; width: 100%; margin-top: 20px; }
 
   .pj-process { margin-top: 48px; }
   .pj-trio { grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 24px; }
@@ -818,4 +819,25 @@ a { color: inherit; text-decoration: none; }
   .pj-zig8 figure:nth-child(even), .pj-stair__b { grid-column: 2 / span 2; width: 100%; }
   .pj-stair__a { grid-row: 1; }
   .pj-stair__b { grid-row: 2; }
+}
+
+/* ---------- CONTAIN 모바일: 2장 나란히 → 스와이프, 일러스트 위 간격 ---------- */
+@media (max-width: 700px) {
+  .pj-sketch.pj-sketch--tight { margin-top: 88px; }
+  .pj-pair--swipe, .pj-smalls {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .pj-pair--swipe::-webkit-scrollbar, .pj-smalls::-webkit-scrollbar { display: none; }
+  .pj-pair--swipe > figure, .pj-smalls > figure { flex: 0 0 100%; scroll-snap-align: center; }
+}
+
+/* 스와이프 점이 .pj-split(그리드) 안에 들어갈 때 이미지 줄 바로 아래에 오도록 */
+@media (max-width: 700px) {
+  .pj-split > .pj-dots { order: 3; }
 }
