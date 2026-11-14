@@ -456,7 +456,7 @@ a { color: inherit; text-decoration: none; }
   margin-top: calc(var(--u) * 15.4);
 }
 .pj-stair__a { grid-column: 1; grid-row: 1; }
-.pj-stair__b { grid-column: 2; grid-row: 2; aspect-ratio: 635 / 620; }
+.pj-stair__b { grid-column: 2; grid-row: 2; aspect-ratio: 2380 / 1553; }
 .pj-process--tight { margin-top: calc(var(--u) * 4); }
 .pj-trio--tall { gap: calc(var(--u) * 3.5); margin-top: calc(var(--u) * 11); }
 .pj-trio--tall figure { aspect-ratio: 388 / 491; }
@@ -681,9 +681,13 @@ a { color: inherit; text-decoration: none; }
   .pj-hero .pj-info { order: 2; padding: 22px 0 0; }
   .pj-hero__img { order: 1; }
 
-  .pj-sketch { width: 100%; margin-top: 48px; }
+  /* 일러스트는 이미지 안에 투명 여백이 있어서, 화면보다 넓게 깔고(양옆은 잘림) 그림을 키움 */
+  .pj { overflow-x: clip; }
+  .pj-sketch, .pj-sketch--wide { width: 150%; margin: 24px 0 0 -25%; }
+  /* 그림이 이미지 가득 차 있는 프로젝트(CONTAIN)는 확대하지 않음 */
+  .pj-sketch.pj-sketch--tight { width: 100%; margin: 48px 0 0; }
   .pj-band { margin-top: 36px; padding: 26px 20px; }
-  .pj-band p { max-width: none; }
+  .pj-band p { max-width: none; text-align: justify; text-align-last: left; }
   .pj-pair { width: 100%; margin-top: 40px; gap: 8px; }
 
   .pj-split,
@@ -696,6 +700,7 @@ a { color: inherit; text-decoration: none; }
 
   .pj-process { margin-top: 48px; }
   .pj-trio { grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 24px; }
+  .pj-trio--tall { margin-top: 28px; }
   .pj-duo { grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
   .pj-duo figure { grid-column: auto; aspect-ratio: 4 / 3; }
   .pj-wide { margin-top: 48px; }
@@ -719,10 +724,22 @@ a { color: inherit; text-decoration: none; }
   .pj-wide--gyeop { margin-top: 40px; }
   .pj-zig8 { margin-top: 40px; }
   .pj-mix2 { column-gap: 8px; margin-top: 40px; }
-  .pj-stair { grid-template-columns: 1fr; gap: 26px; margin-top: 40px; }
-  .pj-stair__a, .pj-stair__b { grid-column: 1; grid-row: auto; width: 68%; margin: 0 auto; }
+  .pj-stair { margin-top: 40px; }
   .pj-process--tight { margin-top: 28px; }
-  .pj-trio--tall { grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 28px; }
+  /* PONY: 스케치와 치수 도면을 더 크게 */
+  .pj-process.pj-process--sketch { width: 210%; margin-left: -55%; }
+  .pj-process.pj-process--plan {
+    aspect-ratio: 350 / 185;
+    background: #f5f5f5;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pj-process.pj-process--plan img { width: 190%; max-width: none; height: auto; flex: none; }
+  /* O-NEST 제품 도식: 박스를 더 높게, 그림은 조금만 크게 */
+  .pj-process.pj-process--plan-s { aspect-ratio: 350 / 120; }
+  .pj-process.pj-process--plan-s img { width: 125%; }
 
   .site-footer {
     grid-template-columns: 1fr 1fr;
@@ -765,4 +782,40 @@ a { color: inherit; text-decoration: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .rv { opacity: 1; translate: none; transition: none; }
+}
+
+/* ---------- 모바일: 3장 나란히 → 옆으로 스와이프 ---------- */
+.pj-dots { display: none; }
+@media (max-width: 700px) {
+  .pj-trio:not(.pj-trio--cap) {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .pj-trio:not(.pj-trio--cap)::-webkit-scrollbar { display: none; }
+  .pj-trio:not(.pj-trio--cap) > figure { flex: 0 0 100%; scroll-snap-align: center; }
+  .pj-dots { display: flex; justify-content: center; gap: 6px; margin-top: 12px; }
+  .pj-dots i { width: 5px; height: 5px; border-radius: 50%; background: #cfcfcf; transition: background 0.2s; }
+  .pj-dots i.is-on { background: #000; }
+}
+
+/* ---------- 모바일: 지그재그 배치 ----------
+   각 이미지가 가로의 2/3를 차지하고, 다음 이미지는 앞 이미지의 절반 지점에서 시작 */
+@media (max-width: 700px) {
+  .pj-zig, .pj-hstair, .pj-zag, .pj-zig8, .pj-stair {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 0;
+  }
+  /* 왼쪽에서 시작하는 이미지 */
+  .pj-zig__b, .pj-hstair__a, .pj-zag__a, .pj-zag__c, .pj-zag__e,
+  .pj-zig8 figure:nth-child(odd), .pj-stair__a { grid-column: 1 / span 2; width: 100%; }
+  /* 오른쪽에서 끝나는 이미지 */
+  .pj-zig__a, .pj-hstair__b, .pj-zag__b, .pj-zag__d,
+  .pj-zig8 figure:nth-child(even), .pj-stair__b { grid-column: 2 / span 2; width: 100%; }
+  .pj-stair__a { grid-row: 1; }
+  .pj-stair__b { grid-row: 2; }
 }

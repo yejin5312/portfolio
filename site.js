@@ -83,7 +83,17 @@
   function initReveal() {
     if (!("IntersectionObserver" in window)) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    var items = document.querySelectorAll(".pj figure, .work, .about-visual");
+    var mobile = window.matchMedia("(max-width: 700px)").matches;
+    var all = document.querySelectorAll(".pj figure, .work, .about-visual");
+    var items = [];
+    for (var k = 0; k < all.length; k++) {
+      var inCar = mobile && all[k].closest && all[k].closest(".pj-trio:not(.pj-trio--cap)");
+      if (!inCar) items.push(all[k]);   // 스와이프 영역 안 이미지는 개별 효과 제외
+    }
+    if (mobile) {
+      var cars = document.querySelectorAll(".pj-trio:not(.pj-trio--cap)");
+      for (var c = 0; c < cars.length; c++) items.push(cars[c]);
+    }
     if (!items.length) return;
     for (var i = 0; i < items.length; i++) items[i].classList.add("rv");
 
@@ -107,6 +117,34 @@
     for (var j = 0; j < items.length; j++) io.observe(items[j]);
   }
 
+  // 모바일: 3장 나란히 배치는 옆으로 스와이프 (아래에 점 표시)
+  function initCarousels() {
+    if (!window.matchMedia("(max-width: 700px)").matches) return;
+    var cars = document.querySelectorAll(".pj-trio:not(.pj-trio--cap)");
+    Array.prototype.forEach.call(cars, function (car) {
+      // 바로 아래 2장짜리(.pj-duo, CONTAIN)가 있으면 같은 스와이프에 합침 (3장 + 2장 = 5장)
+      var next = car.nextElementSibling;
+      if (next && next.classList.contains("pj-duo")) {
+        Array.prototype.slice.call(next.querySelectorAll(":scope > figure")).forEach(function (f) { f.classList.add("r43"); car.appendChild(f); });
+        next.parentNode.removeChild(next);
+      }
+      var figs = car.querySelectorAll(":scope > figure");
+      if (figs.length < 2) return;
+      var dots = document.createElement("div");
+      dots.className = "pj-dots";
+      dots.setAttribute("aria-hidden", "true");
+      for (var i = 0; i < figs.length; i++) dots.appendChild(document.createElement("i"));
+      car.parentNode.insertBefore(dots, car.nextSibling);
+      var ds = dots.children;
+      function update() {
+        var idx = Math.round(car.scrollLeft / (car.clientWidth + 8));
+        for (var i = 0; i < ds.length; i++) ds[i].classList.toggle("is-on", i === idx);
+      }
+      car.addEventListener("scroll", update, { passive: true });
+      update();
+    });
+  }
+
   if (slot === "header") {
     el.insertAdjacentHTML("beforebegin", header);
     initCursor();
@@ -128,6 +166,7 @@
   }
   if (slot === "footer") {
     el.insertAdjacentHTML("beforebegin", footer);
+    initCarousels();
     initReveal();
   }
 })();
