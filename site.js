@@ -78,6 +78,35 @@
     });
   }
 
+
+  // 스크롤하면 이미지가 아래에서 살짝 떠오르며 나타나는 효과 (은은하게)
+  function initReveal() {
+    if (!("IntersectionObserver" in window)) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var items = document.querySelectorAll(".pj figure, .work, .about-visual");
+    if (!items.length) return;
+    for (var i = 0; i < items.length; i++) items[i].classList.add("rv");
+
+    // 화면에 들어올 때마다 나타나고, 화면 밖으로 나가면 다시 숨겨져서 위아래로 오가도 매번 반복됩니다.
+    var io = new IntersectionObserver(function (entries) {
+      var shown = entries.filter(function (e) { return e.isIntersecting; });
+      shown.sort(function (a, b) {
+        var ra = a.boundingClientRect, rb = b.boundingClientRect;
+        return (ra.top - rb.top) || (ra.left - rb.left);
+      });
+      shown.forEach(function (e, n) {
+        e.target.style.transitionDelay = Math.min(n, 4) * 0.1 + "s";
+        e.target.classList.add("rv-in");
+      });
+      entries.forEach(function (e) {
+        if (e.isIntersecting) return;
+        e.target.style.transitionDelay = "";
+        e.target.classList.remove("rv-in");
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -6% 0px" });
+    for (var j = 0; j < items.length; j++) io.observe(items[j]);
+  }
+
   if (slot === "header") {
     el.insertAdjacentHTML("beforebegin", header);
     initCursor();
@@ -97,5 +126,8 @@
       document.addEventListener("keydown", function (e) { if (e.key === "Escape") setOpen(false); });
     }
   }
-  if (slot === "footer") el.insertAdjacentHTML("beforebegin", footer);
+  if (slot === "footer") {
+    el.insertAdjacentHTML("beforebegin", footer);
+    initReveal();
+  }
 })();
