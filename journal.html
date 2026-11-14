@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Journal — Yejin Lee</title>
+  <meta name="description" content="Yejin Lee — travel sketches and illustrations.">
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 상단 바: site.js 에서 모든 페이지 공통으로 불러옵니다 -->
+  <script src="site.js" data-slot="header"></script>
+
+  <!-- JOURNAL (테스트 페이지)
+       이미지는 images/journal/journal-도시이름.jpg (예: journal-helsinki.jpg) 로 넣어주세요. 각 <figure>의 --r 값이 그 칸의 가로:세로 비율이에요. -->
+  <main class="jn">
+    <div class="jn__list">
+      <!-- 3개의 세로줄(위→아래로 쌓여요). 줄마다 사각형 높이가 달라도 위 칸이 짧으면 아래 칸이 위로 올라와요 -->
+      <!-- 코펜하겐~암스테르담: 아직 상세 페이지가 없어 링크 없이 썸네일만 있어요. 날짜(2025)는 임시예요 -->
+      <div class="jn__col">
+      <figure style="--o:1;--r:31 / 40">
+        <a class="jn__link" href="journal-helsinki.html" aria-label="Helsinki, Finland 보기">
+          <div class="jn__img"><img src="images/journal/helsinki/journal-helsinki.jpg" alt="Helsinki, Finland" loading="lazy" onerror="if(!this.dataset.t){this.dataset.t=1;this.src='images/journal/journal-helsinki.jpg'}else{this.style.display='none'}"><span class="jn__hover"><span class="jn__hover-txt">Read more</span><svg class="jn__arrow" viewBox="0 0 40 12" width="28" height="9" aria-hidden="true"><path d="M0 6h38M32 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <figcaption>Helsinki, Finland<span>2025</span></figcaption>
+        </a>
+      </figure>
+      <figure style="--o:4;--r:31 / 40">
+        <a class="jn__link" href="journal-bornholm.html" aria-label="Bornholm, Denmark 보기">
+          <div class="jn__img"><img src="images/journal/bornholm/journal-bornholm.jpg" alt="Bornholm, Denmark" loading="lazy" onerror="if(!this.dataset.t){this.dataset.t=1;this.src='images/journal/journal-bornholm.jpg'}else{this.style.display='none'}"><span class="jn__hover"><span class="jn__hover-txt">Read more</span><svg class="jn__arrow" viewBox="0 0 40 12" width="28" height="9" aria-hidden="true"><path d="M0 6h38M32 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <figcaption>Bornholm, Denmark<span>2025</span></figcaption>
+        </a>
+      </figure>
+      <figure style="--o:7;--r:4 / 5">
+        <a class="jn__link" href="journal-brussels.html" aria-label="Brussels, Belgium 보기">
+          <div class="jn__img"><img src="images/journal/brussels/journal-brussels.jpg" alt="Brussels, Belgium" loading="lazy" onerror="if(!this.dataset.t){this.dataset.t=1;this.src='images/journal/journal-brussels.jpg'}else{this.style.display='none'}"><span class="jn__hover"><span class="jn__hover-txt">Read more</span><svg class="jn__arrow" viewBox="0 0 40 12" width="28" height="9" aria-hidden="true"><path d="M0 6h38M32 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <figcaption>Brussels, Belgium<span>2025</span></figcaption>
+        </a>
+      </figure>
+      <figure style="--o:10;--r:4 / 5">
+        <a class="jn__link" href="journal-amsterdam.html" aria-label="Amsterdam, Netherlands 보기">
+          <div class="jn__img"><img src="images/journal/amsterdam/journal-amsterdam.jpg" alt="Amsterdam, Netherlands" loading="lazy" onerror="if(!this.dataset.t){this.dataset.t=1;this.src='images/journal/journal-amsterdam.jpg'}else{this.style.display='none'}"><span class="jn__hover"><span class="jn__hover-txt">Read more</span><svg class="jn__arrow" viewBox="0 0 40 12" width="28" height="9" aria-hidden="true"><path d="M0 6h38M32 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <figcaption>Amsterdam, Netherlands<span>2025</span></figcaption>
+        </a>
+      </figure>
+      </div>
+      <div class="jn__col">
+      <figure style="--o:2;--r:17 / 20">
+        <a class="jn__link" href="journal-stockholm.html" aria-label="Stockholm, Sweden 보기">
+          <div class="jn__img"><img src="images/journal/stockholm/journal-stockholm.jpg" alt="Stockholm, Sweden" loading="lazy" onerror="if(!this.dataset.t){this.dataset.t=1;this.src='images/journal/journal-stockholm.jpg'}else{this.style.display='none'}"><span class="jn__hover"><span class="jn__hover-txt">Read more</span><svg class="jn__arrow" viewBox="0 0 40 12" width="28" height="9" aria-hidden="true"><path d="M0 6h38M32 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <figcaption>Stockholm, Sweden<span>2025</span></figcaption>
+        </a>
+      </figure>
+      <figure style="--o:5;--r:4 / 3">
+        <a class="jn__link" href="journal-copenhagen.html" aria-label="Copenhagen, Denmark 보기">
+          <div class="jn__img"><img src="images/journal/copenhagen/journal-copenhagen.jpg" alt="Copenhagen, Denmark" loading="lazy" onerror="if(!this.dataset.t){this.dataset.t=1;this.src='images/journal/journal-copenhagen.jpg'}else{this.style.display='none'}"><span class="jn__hover"><span class="jn__hover-txt">Read more</span><svg class="jn__arrow" viewBox="0 0 40 12" width="28" height="9" aria-hidden="true"><path d="M0 6h38M32 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <figcaption>Copenhagen, Denmark<span>2025</span></figcaption>
+        </a>
+      </figure>
+      <figure style="--o:8;--r:3 / 2">
+        <a class="jn__link" href="journal-ghent.html" aria-label="Ghent, Belgium 보기">
+          <div class="jn__img"><img src="images/journal/ghent/journal-ghent.jpg" alt="Ghent, Belgium" loading="lazy" onerror="if(!this.dataset.t){this.dataset.t=1;this.src='images/journal/journal-ghent.jpg'}else{this.style.display='none'}"><span class="jn__hover"><span class="jn__hover-txt">Read more</span><svg class="jn__arrow" viewBox="0 0 40 12" width="28" height="9" aria-hidden="true"><path d="M0 6h38M32 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <figcaption>Ghent, Belgium<span>2025</span></figcaption>
+        </a>
+      </figure>
+      </div>
+      <div class="jn__col">
+      <figure style="--o:3;--r:31 / 40">
+        <a class="jn__link" href="journal-oslo.html" aria-label="Oslo, Norway 보기">
+          <div class="jn__img"><img src="images/journal/oslo/journal-oslo.jpg" alt="Oslo, Norway" loading="lazy" onerror="if(!this.dataset.t){this.dataset.t=1;this.src='images/journal/journal-oslo.jpg'}else{this.style.display='none'}"><span class="jn__hover"><span class="jn__hover-txt">Read more</span><svg class="jn__arrow" viewBox="0 0 40 12" width="28" height="9" aria-hidden="true"><path d="M0 6h38M32 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <figcaption>Oslo, Norway<span>2025</span></figcaption>
+        </a>
+      </figure>
+      <figure style="--o:6;--r:17 / 20">
+        <a class="jn__link" href="journal-paris.html" aria-label="Paris, France 보기">
+          <div class="jn__img"><img src="images/journal/paris/journal-paris.jpg" alt="Paris, France" loading="lazy" onerror="if(!this.dataset.t){this.dataset.t=1;this.src='images/journal/journal-paris.jpg'}else{this.style.display='none'}"><span class="jn__hover"><span class="jn__hover-txt">Read more</span><svg class="jn__arrow" viewBox="0 0 40 12" width="28" height="9" aria-hidden="true"><path d="M0 6h38M32 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <figcaption>Paris, France<span>2025</span></figcaption>
+        </a>
+      </figure>
+      <figure style="--o:9;--r:31 / 40">
+        <a class="jn__link" href="journal-dessau.html" aria-label="Dessau, Germany 보기">
+          <div class="jn__img"><img src="images/journal/dessau/journal-dessau.jpg" alt="Dessau, Germany" loading="lazy" onerror="if(!this.dataset.t){this.dataset.t=1;this.src='images/journal/journal-dessau.jpg'}else{this.style.display='none'}"><span class="jn__hover"><span class="jn__hover-txt">Read more</span><svg class="jn__arrow" viewBox="0 0 40 12" width="28" height="9" aria-hidden="true"><path d="M0 6h38M32 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <figcaption>Dessau, Germany<span>2025</span></figcaption>
+        </a>
+      </figure>
+      </div>
+    </div>
+  </main>
+
+  <!-- 하단 정보 바: site.js 에서 모든 페이지 공통으로 불러옵니다 -->
+  <script src="site.js" data-slot="footer"></script>
+</body>
+</html>
