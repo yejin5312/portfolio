@@ -127,6 +127,12 @@
     Array.prototype.forEach.call(cars, function (car) {
       // 바로 아래 2장짜리(.pj-duo, CONTAIN)가 있으면 같은 스와이프에 합침 (3장 + 2장 = 5장)
       var next = car.nextElementSibling;
+      // (O-NEST) 2장 + 지그재그 2장 = 4장을 한 스와이프로, 모두 같은 세로 높이(3:4)
+      if (next && car.classList.contains("pj-pair--swipe") && next.classList.contains("pj-zig")) {
+        Array.prototype.slice.call(next.querySelectorAll(":scope > figure")).forEach(function (f) { f.classList.add("r34"); car.appendChild(f); });
+        next.parentNode.removeChild(next);
+        next = null;
+      }
       if (next && next.classList.contains("pj-duo")) {
         Array.prototype.slice.call(next.querySelectorAll(":scope > figure")).forEach(function (f) { f.classList.add("r43"); car.appendChild(f); });
         next.parentNode.removeChild(next);

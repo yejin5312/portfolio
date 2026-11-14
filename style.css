@@ -683,7 +683,7 @@ a { color: inherit; text-decoration: none; }
 
   /* 일러스트는 이미지 안에 투명 여백이 있어서, 화면보다 넓게 깔고(양옆은 잘림) 그림을 키움 */
   .pj { overflow-x: clip; }
-  .pj-sketch, .pj-sketch--wide { width: 150%; margin: 24px 0 0 -25%; }
+  .pj-sketch, .pj-sketch--wide { width: 150%; margin: 64px 0 0 -25%; }
   /* 그림이 이미지 가득 차 있는 프로젝트(CONTAIN)는 확대하지 않음 */
   .pj-sketch.pj-sketch--tight { width: 100%; margin: 48px 0 0; }
   .pj-band { margin-top: 36px; padding: 26px 20px; }
@@ -701,21 +701,21 @@ a { color: inherit; text-decoration: none; }
 
   .pj-process { margin-top: 48px; }
   .pj-trio { grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 24px; }
-  .pj-trio--tall { margin-top: 28px; }
+  .pj-trio--tall { margin-top: 10px; }
   .pj-duo { grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
   .pj-duo figure { grid-column: auto; aspect-ratio: 4 / 3; }
   .pj-wide { margin-top: 48px; }
   .pj--long { margin-bottom: 80px; }
   .pj-trio--cap { grid-template-columns: 1fr; gap: 26px; margin-top: 40px; }
-  .pj-trio--cap figure { width: 68%; margin: 0 auto; }
+  .pj-trio--cap figure { width: 100%; margin: 0; }
   .pj-figcap { margin-top: 8px; }
   .pj-trio--cap + .pj-pair { margin-top: 40px; }
   .pj-zig { margin-top: 14px; }
-  .pj-map { width: 100%; }
+  .pj-map { width: 125%; margin-left: -12.5%; }
   .pj-note { margin-top: 24px; font-size: 10px; }
   .pj-wide--onest { margin-top: 48px; }
-  .pj-grid9 { column-gap: 8px; row-gap: 14px; margin-top: 40px; }
-  .pj-grid9 .pj-figcap { margin-top: 6px; font-size: 10px; }
+  .pj-grid9 { grid-template-columns: 1fr; column-gap: 0; row-gap: 28px; margin-top: 40px; }
+  .pj-grid9 .pj-figcap { margin-top: 8px; font-size: var(--pj-cap); }
   .pj-wide--hol { margin-top: 40px; }
   .pj-hstair { margin-top: 14px; }
   .pj-process--hol { margin-top: 32px; }
@@ -840,4 +840,41 @@ a { color: inherit; text-decoration: none; }
 /* 스와이프 점이 .pj-split(그리드) 안에 들어갈 때 이미지 줄 바로 아래에 오도록 */
 @media (max-width: 700px) {
   .pj-split > .pj-dots { order: 3; }
+}
+
+/* PONY 모바일: 두 이미지를 양쪽 여백에 맞게 크게, 가운데 정렬로 위아래 배치 */
+@media (max-width: 700px) {
+  .pj-stair.pj-stair--stack { grid-template-columns: 1fr; gap: 10px; }
+  .pj-stair.pj-stair--stack .pj-stair__a,
+  .pj-stair.pj-stair--stack .pj-stair__b { grid-column: 1; width: 100%; margin: 0 auto; }
+  .pj-stair.pj-stair--stack .pj-stair__a { grid-row: 1; }
+  .pj-stair.pj-stair--stack .pj-stair__b { grid-row: 2; }
+}
+
+/* 스와이프 안의 이미지는 모두 같은 세로 높이(3:4)로 */
+@media (max-width: 700px) {
+  .pj-pair--swipe > figure { aspect-ratio: 3 / 4; }
+}
+
+/* ---------- HOLIDAY 모바일: 위/아래 사진 모두 좌우 여백 꽉 차게 ---------- */
+@media (max-width: 700px) {
+  .pj-hstair { grid-template-columns: 1fr; gap: 10px; }
+  .pj-hstair__a, .pj-hstair__b { grid-column: 1; width: 100%; }
+  .pj-hstair__a { grid-row: 1; }
+  .pj-hstair__b { grid-row: 2; }
+}
+
+/* ---------- PILE 모바일: 지그재그 → 한 줄, 좌우 여백 꽉 차게 ---------- */
+@media (max-width: 700px) {
+  .pj-zag { grid-template-columns: 1fr; gap: 10px; }
+  .pj-zag figure { grid-column: 1; width: 100%; }
+  .pj-zag__a { grid-row: 1; } .pj-zag__b { grid-row: 2; } .pj-zag__c { grid-row: 3; } .pj-zag__d { grid-row: 4; }
+}
+
+/* ---------- RUSTLE 모바일: 지그재그 → 한 줄, 좌우 여백 꽉 차게 ---------- */
+@media (max-width: 700px) {
+  .pj-zig8 { grid-template-columns: 1fr; gap: 10px; }
+  .pj-zig8 figure { grid-column: 1 !important; width: 100%; }
+  .pj-zig8 figure:nth-child(1){grid-row:1}.pj-zig8 figure:nth-child(2){grid-row:2}.pj-zig8 figure:nth-child(3){grid-row:3}.pj-zig8 figure:nth-child(4){grid-row:4}
+  .pj-zig8 figure:nth-child(5){grid-row:5}.pj-zig8 figure:nth-child(6){grid-row:6}.pj-zig8 figure:nth-child(7){grid-row:7}.pj-zig8 figure:nth-child(8){grid-row:8}
 }
