@@ -79,6 +79,9 @@
   }
 
 
+  // 모바일에서 옆으로 스와이프하는 영역
+  var CAR_SEL = ".pj-trio:not(.pj-trio--cap), .pj-pair--swipe, .pj-smalls";
+
   // 스크롤하면 이미지가 아래에서 살짝 떠오르며 나타나는 효과 (은은하게)
   function initReveal() {
     if (!("IntersectionObserver" in window)) return;
@@ -87,11 +90,11 @@
     var all = document.querySelectorAll(".pj figure, .work, .about-visual");
     var items = [];
     for (var k = 0; k < all.length; k++) {
-      var inCar = mobile && all[k].closest && all[k].closest(".pj-trio:not(.pj-trio--cap)");
+      var inCar = mobile && all[k].closest && all[k].closest(CAR_SEL);
       if (!inCar) items.push(all[k]);   // 스와이프 영역 안 이미지는 개별 효과 제외
     }
     if (mobile) {
-      var cars = document.querySelectorAll(".pj-trio:not(.pj-trio--cap)");
+      var cars = document.querySelectorAll(CAR_SEL);
       for (var c = 0; c < cars.length; c++) items.push(cars[c]);
     }
     if (!items.length) return;
@@ -120,7 +123,7 @@
   // 모바일: 3장 나란히 배치는 옆으로 스와이프 (아래에 점 표시)
   function initCarousels() {
     if (!window.matchMedia("(max-width: 700px)").matches) return;
-    var cars = document.querySelectorAll(".pj-trio:not(.pj-trio--cap)");
+    var cars = document.querySelectorAll(CAR_SEL);
     Array.prototype.forEach.call(cars, function (car) {
       // 바로 아래 2장짜리(.pj-duo, CONTAIN)가 있으면 같은 스와이프에 합침 (3장 + 2장 = 5장)
       var next = car.nextElementSibling;
