@@ -244,6 +244,8 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
 }
 
+.about-visual picture { display: contents; }
+
 .about-visual img {
   display: block;
   width: 100%;
