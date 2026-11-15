@@ -163,6 +163,11 @@ a { color: inherit; text-decoration: none; }
 
 .work:hover .work__title { opacity: 1; }
 
+/* 모바일: 이름 글씨가 너무 작아서 키움 */
+@media (max-width: 700px) {
+  .work__title { font-size: 15px; letter-spacing: 0.05em; }
+}
+
 /* 막 뒤의 이미지도 살짝 흐려져서 글씨가 더 잘 보임 (가장자리가 비치지 않게 약간 확대) */
 .work img { transition: filter 0.25s ease, transform 0.25s ease; }
 
