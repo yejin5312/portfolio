@@ -90,6 +90,17 @@
       <img src="images/pony/pony-12.jpg" alt="공방에 놓인 스툴들 사이의 PONY" loading="lazy" onerror="this.style.display='none'">
     </figure>
 
+    <!-- 이전/다음 프로젝트 (WORKS 순서대로, 마지막 다음은 첫 프로젝트로 이어져요) -->
+    <nav class="pn" aria-label="다른 프로젝트">
+      <a class="pn__item pn__item--prev" href="contain.html" aria-label="이전 프로젝트: CONTAIN | VASE">
+        <div class="pn__img" style="background:var(--placeholder)"><img src="images/work-01.png" alt="CONTAIN | VASE" loading="lazy" onerror="this.style.display='none'"><span class="pn__name">CONTAIN | VASE</span></div>
+        <div class="pn__lab"><svg viewBox="0 0 40 12" width="28" height="9" aria-hidden="true"><path d="M40 6H2M8 1L2 6l6 5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="pn__l">Previous<span class="pn__n"> · CONTAIN | VASE</span></span></div>
+      </a>
+      <a class="pn__item pn__item--next" href="o-nest.html" aria-label="다음 프로젝트: O-NEST | LIGHTING">
+        <div class="pn__img" style="background:#1a1a1a"><img src="images/work-03.png" alt="O-NEST | LIGHTING" loading="lazy" onerror="this.style.display='none'"><span class="pn__name">O-NEST | LIGHTING</span></div>
+        <div class="pn__lab"><span class="pn__l">Next<span class="pn__n"> · O-NEST | LIGHTING</span></span><svg viewBox="0 0 40 12" width="28" height="9" aria-hidden="true"><path d="M0 6h38M32 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </a>
+    </nav>
   </main>
 
   <!-- 하단 정보 바: site.js 에서 모든 페이지 공통으로 불러옵니다 -->
