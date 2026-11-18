@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Souvenir Words | Bornholm — Yejin Lee</title>
+  <meta name="description" content="Yejin Lee — travel sketches and illustrations.">
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 상단 바: site.js 에서 모든 페이지 공통으로 불러옵니다 -->
+  <script src="site.js" data-slot="header"></script>
+
+  <!-- JOURNAL · 보른홀름 상세 (테스트 페이지)
+       이미지: images/journal/bornholm/journal-bornholm-01.jpg (맨 위 큰 사진), journal-bornholm-02.jpg ~ 05.jpg (아래 그림들)
+       한 줄(<figure>)이 그림 1장 + 문장이에요. 문장이 없으면 그림만 나와요. -->
+  <main class="jn jd">
+    <header class="jd__head">
+      <h1 class="jd__title">Souvenir Words | Bornholm</h1>
+      <p class="jd__date">09.Jul.2025 - 10.Jul.2025</p>
+      <p class="jd__intro">Bornholm was an island that ran on its own clock.<br>People spoke slowly, as if there was always enough time,<br>and every conversation seemed to end with a smile.<br>I drew by the sea, and the pages filled up a little more gently.</p>
+    </header>
+
+    <figure class="jd__hero">
+      <img src="images/journal/bornholm/journal-bornholm-01.jpg" alt="Souvenir Words | Bornholm" onerror="this.style.display='none'">
+    </figure>
+
+    <div class="jd__list">
+      <figure class="jd__row jd__row--l" style="--r:5 / 7">
+        <div class="jd__img"><img src="images/journal/bornholm/journal-bornholm-02.jpg" alt="Bornholm 02" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="jd__txt"><p class="jd__q">&ldquo;Show it, don&rsquo;t tell it.&rdquo;</p><p class="jd__by">Jasmin, Cafe Kaas · 09.Jul.2025</p></div>
+      </figure>
+      <figure class="jd__row jd__row--r jd__row--land" style="--r:7 / 5">
+        <div class="jd__img"><img src="images/journal/bornholm/journal-bornholm-03.jpg" alt="Bornholm 03" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="jd__txt"></div>
+      </figure>
+      <figure class="jd__row jd__row--l" style="--r:5 / 7">
+        <div class="jd__img"><img src="images/journal/bornholm/journal-bornholm-04.jpg" alt="Bornholm 04" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="jd__txt"><p class="jd__q">&ldquo;Stay focused.&rdquo;</p><p class="jd__by">Elin R., BORNHOLMS KUNSTMUSEUM · 10.Jul.2025</p></div>
+      </figure>
+      <figure class="jd__row jd__row--r" style="--r:5 / 7">
+        <div class="jd__img"><img src="images/journal/bornholm/journal-bornholm-05.jpg" alt="Bornholm 05" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="jd__txt"><p class="jd__q">&ldquo;Enjoy the peace in life.&rdquo;</p><p class="jd__by">Rune, Sandvig IS Kalas · 10.Jul.2025</p></div>
+      </figure>
+    </div>
+
+    <!-- 하단 스냅 사진: 옆으로 스와이프 (PC는 마우스로 끌기). 이미지: journal-bornholm-photo-01.jpg ~ 09.jpg -->
+    <div class="jd__stripwrap">
+      <button type="button" class="jd__nav jd__nav--prev" aria-label="이전 사진"><svg viewBox="0 0 40 12" width="28" height="9" aria-hidden="true"><path d="M40 6H2M8 1L2 6l6 5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button type="button" class="jd__nav jd__nav--next" aria-label="다음 사진"><svg viewBox="0 0 40 12" width="28" height="9" aria-hidden="true"><path d="M0 6h38M32 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="jd__strip" tabindex="0" aria-label="Bornholm snapshots">
+      <div class="jd__s" style="--r:3 / 2"><img src="images/journal/bornholm/journal-bornholm-photo-01.jpg" alt="Bornholm snapshot 1" loading="lazy" draggable="false" onerror="this.style.display='none';this.parentNode.classList.add('is-missing')"></div>
+      <div class="jd__s" style="--r:2 / 3"><img src="images/journal/bornholm/journal-bornholm-photo-02.jpg" alt="Bornholm snapshot 2" loading="lazy" draggable="false" onerror="this.style.display='none';this.parentNode.classList.add('is-missing')"></div>
+      <div class="jd__s" style="--r:2 / 3"><img src="images/journal/bornholm/journal-bornholm-photo-03.jpg" alt="Bornholm snapshot 3" loading="lazy" draggable="false" onerror="this.style.display='none';this.parentNode.classList.add('is-missing')"></div>
+      <div class="jd__s" style="--r:2 / 3"><img src="images/journal/bornholm/journal-bornholm-photo-04.jpg" alt="Bornholm snapshot 4" loading="lazy" draggable="false" onerror="this.style.display='none';this.parentNode.classList.add('is-missing')"></div>
+      <div class="jd__s" style="--r:3 / 2"><img src="images/journal/bornholm/journal-bornholm-photo-05.jpg" alt="Bornholm snapshot 5" loading="lazy" draggable="false" onerror="this.style.display='none';this.parentNode.classList.add('is-missing')"></div>
+      <div class="jd__s" style="--r:3 / 2"><img src="images/journal/bornholm/journal-bornholm-photo-06.jpg" alt="Bornholm snapshot 6" loading="lazy" draggable="false" onerror="this.style.display='none';this.parentNode.classList.add('is-missing')"></div>
+      <div class="jd__s" style="--r:3 / 2"><img src="images/journal/bornholm/journal-bornholm-photo-07.jpg" alt="Bornholm snapshot 7" loading="lazy" draggable="false" onerror="this.style.display='none';this.parentNode.classList.add('is-missing')"></div>
+      <div class="jd__s" style="--r:2 / 3"><img src="images/journal/bornholm/journal-bornholm-photo-08.jpg" alt="Bornholm snapshot 8" loading="lazy" draggable="false" onerror="this.style.display='none';this.parentNode.classList.add('is-missing')"></div>
+      <div class="jd__s" style="--r:3 / 2"><img src="images/journal/bornholm/journal-bornholm-photo-09.jpg" alt="Bornholm snapshot 9" loading="lazy" draggable="false" onerror="this.style.display='none';this.parentNode.classList.add('is-missing')"></div>
+    </div>
+    </div>
+    <!-- 이전/다음 도시 이동 -->
+    <nav class="jd__pager" aria-label="다른 도시">
+      <a class="jd__pg jd__pg--prev" href="journal-oslo.html">
+        <svg viewBox="0 0 40 12" width="28" height="9" aria-hidden="true"><path d="M40 6H2M8 1L2 6l6 5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="jd__pg-t"><span class="jd__pg-l">Previous</span>Oslo, Norway</span>
+      </a>
+      <a class="jd__pg jd__pg--next" href="journal-copenhagen.html">
+        <span class="jd__pg-t"><span class="jd__pg-l">Next</span>Copenhagen, Denmark</span>
+        <svg viewBox="0 0 40 12" width="28" height="9" aria-hidden="true"><path d="M0 6h38M32 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </nav>
+  </main>
+
+  <!-- 하단 정보 바: site.js 에서 모든 페이지 공통으로 불러옵니다 -->
+  <script src="site.js" data-slot="footer"></script>
+</body>
+</html>
