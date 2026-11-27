@@ -147,8 +147,15 @@
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     var CLIP0 = "inset(-0.3em 100% -0.3em 0)", CLIP1 = "inset(-0.3em -0.3em -0.3em -0.3em)";
 
+    // 문장 바로 아래에 붙은 번역(.jd__tr)과 이름·장소·날짜(.jd__by)를 순서대로 모은다
+    function follow(q) {
+      var list = [], n = q.nextElementSibling;
+      while (n && (n.classList.contains("jd__tr") || n.classList.contains("jd__by"))) { list.push(n); n = n.nextElementSibling; }
+      return list;
+    }
+
     function build(q) {
-      var by = q.nextElementSibling;
+      var extra = follow(q);
       // 단어를 span 으로 감싸서 줄 위치를 잰다
       var kids = Array.prototype.slice.call(q.childNodes), i, j;
       for (i = 0; i < kids.length; i++) {
@@ -188,7 +195,12 @@
         lines[i].animate([{ clipPath: CLIP0 }, { clipPath: CLIP1 }], { duration: dur, delay: delay, easing: "cubic-bezier(.4,0,.2,1)", fill: "both" });
         delay += dur;
       }
-      if (by) by.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 900, delay: delay + 150, easing: "ease", fill: "both" });
+      // 문장 → 영문 해석 → 이름/장소/날짜 순서로 하나씩 나타난다
+      var at = delay + 150;
+      for (i = 0; i < extra.length; i++) {
+        extra[i].animate([{ opacity: 0 }, { opacity: 1 }], { duration: 900, delay: at, easing: "ease", fill: "both" });
+        at += 650;
+      }
     }
 
     var io = new IntersectionObserver(function (entries) {
@@ -203,7 +215,8 @@
     for (var k = 0; k < qs.length; k++) {
       qs[k].__orig = qs[k].innerHTML;
       qs[k].style.visibility = "hidden";
-      if (qs[k].nextElementSibling) qs[k].nextElementSibling.style.opacity = "0";
+      var ex = follow(qs[k]);
+      for (var x = 0; x < ex.length; x++) ex[x].style.opacity = "0";
       io.observe(qs[k]);
     }
 
@@ -216,8 +229,8 @@
         if (qs[m].__done) {
           qs[m].innerHTML = qs[m].__orig;
           qs[m].style.visibility = "visible";
-          var b = qs[m].nextElementSibling;
-          if (b) { b.getAnimations().forEach(function (a) { a.cancel(); }); b.style.opacity = "1"; }
+          var bs = follow(qs[m]);
+          for (var y = 0; y < bs.length; y++) { bs[y].getAnimations().forEach(function (a) { a.cancel(); }); bs[y].style.opacity = "1"; }
         }
       }
     });
